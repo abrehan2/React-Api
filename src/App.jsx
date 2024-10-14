@@ -1,3 +1,11 @@
+// Imports:
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+
 export default function App() {
-  return <p className="text-red-600">This is an App</p>
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 }
