@@ -2,12 +2,17 @@
 
 // Imports:
 import Card from "../components/Card";
+import useData from "../hooks/useData";
 import Main from "../layouts/Main";
 
 export default function Home() {
-  return (
+  const users = useData();
+
+  return users ? (
     <Main>
-      <Card />
+      {users && users?.map((user) => <Card key={user?.id} {...user} />)}
     </Main>
+  ) : (
+    <p>Loading...</p>
   );
 }

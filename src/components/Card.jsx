@@ -1,31 +1,32 @@
 // Imports:
-import { Link } from "react-router-dom";
 import Badge from "./Badge";
+import { Capitalize } from "../utils";
+import Button from "./Button";
+import axios from "axios";
+import { entities } from "../config/entitites";
+import { toast } from "react-toastify";
 
-export default function Card() {
+export default function Card(user) {
+  const deleteHandler = async () => {
+    await axios.delete(entities.base.concat(`/${user.id}`));
+    toast.success('User deleted');
+  };
+
   return (
     <div className="max-w-sm overflow-hidden p-6 space-y-3 shadow-lg bg-slate-300 border border-slate-300 rounded-lg">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-        Abdul Rehan
+        {Capitalize(user.name)}
       </h5>
       <div className="space-y-2">
-        <Badge variant="Default" value={"abc@gmail.com"} />
-        <Badge variant="Green" value={"123456"} />
-        <p className="mb-3 font-normal text-gray-700">Software Engineer</p>
+        <Badge variant="Default" value={user.email} />
+        <Badge variant="Green" value={user.phone} />
+        <p className="mb-3 font-normal text-gray-700">
+          {Capitalize(user.designation)}
+        </p>
       </div>
       <div className="space-x-3 flex justify-end">
-        <Link
-          to="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-        >
-          View
-        </Link>
-        <Link
-          to="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300"
-        >
-          Delete
-        </Link>
+        <Button variant="Default" value="View" onClick={() => {}} />
+        <Button variant="Red" value="Delete" onClick={deleteHandler} />
       </div>
     </div>
   );

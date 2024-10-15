@@ -10,4 +10,15 @@
   body {
     @apply overflow-x-hidden;
   }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+ @apply appearance-none m-0;
+}
+
+/* Firefox */
+input[type=number] {
+  @apply appearance-none;
+}
 }
