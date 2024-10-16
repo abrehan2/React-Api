@@ -14,8 +14,9 @@ export default function useData() {
          entities.base
         );
         setUsers(response.data);
-      } catch {
-        toast.error('Error in useData hook');
+      } catch(err) {
+        console.log('ERROR: ', err)
+        toast.error('Something went wrong');
       }
     })();
   }, []);

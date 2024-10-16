@@ -32,9 +32,10 @@ export default function Modal({ open, setOpen }) {
 
     try {
       await axios.post(entities.base, values);
-      toast.success('User created');
       setOpen(!open);
-    } catch {
+      window.location.reload();
+    } catch(err) {
+      console.log('ERROR: ', err);
       toast.error("Something went wrong");
     }
   };

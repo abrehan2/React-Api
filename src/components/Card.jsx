@@ -4,12 +4,12 @@ import { Capitalize } from "../utils";
 import Button from "./Button";
 import axios from "axios";
 import { entities } from "../config/entitites";
-import { toast } from "react-toastify";
 
 export default function Card(user) {
+  
   const deleteHandler = async () => {
     await axios.delete(entities.base.concat(`/${user.id}`));
-    toast.success('User deleted');
+    window.location.reload();
   };
 
   return (
@@ -25,7 +25,6 @@ export default function Card(user) {
         </p>
       </div>
       <div className="space-x-3 flex justify-end">
-        <Button variant="Default" value="View" onClick={() => {}} />
         <Button variant="Red" value="Delete" onClick={deleteHandler} />
       </div>
     </div>

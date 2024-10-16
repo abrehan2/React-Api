@@ -2,6 +2,7 @@
 
 // Imports:
 import Card from "../components/Card";
+import Spinner from "../components/Spinner";
 import useData from "../hooks/useData";
 import Main from "../layouts/Main";
 
@@ -10,9 +11,9 @@ export default function Home() {
 
   return users ? (
     <Main>
-      {users && users?.map((user) => <Card key={user?.id} {...user} />)}
+      {users?.map((user) => <Card key={user?.id} {...user} />)}
     </Main>
   ) : (
-    <p>Loading...</p>
+    <Spinner />
   );
 }
